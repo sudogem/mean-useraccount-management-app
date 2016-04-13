@@ -14,4 +14,4 @@ $ DEBUG=mean-useraccount-management-app:* npm start
 
 
 #### Developer    
-mean-useraccount-management-app; 2016 Arman Ortega. Released under the MIT License.    
+mean-useraccount-management-app &copy; 2016 Arman Ortega. Released under the MIT License.    
