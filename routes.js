@@ -40,8 +40,8 @@ module.exports = function(app) {
     });
   });
   app.post('/signup', users.signup);
-  app.post('/user/update', users.updateUser);
-  app.post('/user/delete', users.deleteUser);
-  app.post('/login', users.login);
-  app.get('/user/profile', users.getUserProfile);
+  // app.post('/user/update', users.updateUser);
+  // app.post('/user/delete', users.deleteUser);
+  // app.post('/login', users.login);
+  // app.get('/user/profile', users.getUserProfile);
 }
