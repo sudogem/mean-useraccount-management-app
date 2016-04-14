@@ -1,19 +1,23 @@
+"use strict";
 var crypto = require('crypto');
 var express = require('express');
+var sessmsg = "";
 module.exports = function(app) {
   var users = require('./controllers/users_controller');
   app.use('/static', express.static( './static'))
      .use('/lib', express.static( '../lib')
   );
+
   app.get('/', function(req, res) {
-      if (req.session.user) {
-        res.render('index', {username: req.session.username,
-          msg:req.session.msg});
-      } else {
-        req.session.msg = 'Access denied!';
-        res.redirect('/login');
-      }
+      // if (req.session.user) {
+      //   res.render('index', {username: req.session.username, msg:req.session.msg});
+      // } else {
+      //   req.session.msg = 'Access denied!';
+      //   res.redirect('/login');
+      // }
+      res.render('index', {msg: 'xxxx', username: '' });
   });
+
   app.get('/user', function(req, res){
      if (req.session.user) {
        res.render('user', {msg:req.session.msg});
@@ -22,12 +26,10 @@ module.exports = function(app) {
        res.redirect('/login');
      }
   });
-  app.get('/signup', function(req, res){
-    if (req.session.user) {
-      res.redirect('/');
-    }
-    res.render('signup', {msg:req.session.msg});
-  });
+
+  app.get('/signup', users.init_signup);
+  app.post('/signup', users.signup);
+
   app.get('/login',  function(req, res){
     if (req.session.user) {
       res.redirect('/');
@@ -39,7 +41,8 @@ module.exports = function(app) {
       res.redirect('/login');
     });
   });
-  app.post('/signup', users.signup);
+
+
   // app.post('/user/update', users.updateUser);
   // app.post('/user/delete', users.deleteUser);
   // app.post('/login', users.login);
