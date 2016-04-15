@@ -4,19 +4,22 @@ var express = require('express');
 var sessmsg = "";
 module.exports = function(app) {
   var users = require('./controllers/users_controller');
+  var site = require('./controllers/site_controller');
+
   app.use('/static', express.static( './static'))
      .use('/lib', express.static( '../lib')
   );
 
-  app.get('/', function(req, res) {
+  // app.get('/', function(req, res) {
       // if (req.session.user) {
       //   res.render('index', {username: req.session.username, msg:req.session.msg});
       // } else {
       //   req.session.msg = 'Access denied!';
       //   res.redirect('/login');
       // }
-      res.render('index', {msg: 'xxxx', username: '' });
-  });
+  //     res.render('index', {msg: 'xxxx', username: '' });
+  // });
+  app.get('/', site.index);
 
   app.get('/user', function(req, res){
      if (req.session.user) {

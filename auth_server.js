@@ -1,3 +1,4 @@
+"use strict";
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -7,7 +8,7 @@ var cookieParser = require('cookie-parser');
 var mongoStore = require('connect-mongo/es5')(session); // For versions 0.10, 0.12 and io.js, you must use the ES5 fallback:
 
 require('./models/users_model.js');
-mongoose.connect('mongodb://localhost/myapp');
+mongoose.connect('mongodb://localhost/useracctDB');
 var app = express();
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/views');
