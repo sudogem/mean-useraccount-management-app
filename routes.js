@@ -5,6 +5,7 @@ var sessmsg = "";
 module.exports = function(app) {
   var users = require('./controllers/users_controller');
   var site = require('./controllers/site_controller');
+  var middleware = require('./middleware');
 
   app.use('/static', express.static( './static'))
      .use('/lib', express.static( '../lib')
@@ -21,33 +22,24 @@ module.exports = function(app) {
   // });
   app.get('/', site.index);
 
-  app.get('/user', function(req, res){
-     if (req.session.user) {
-       res.render('user', {msg:req.session.msg});
-     } else {
-       req.session.msg = 'Access denied!';
-       res.redirect('/login');
-     }
-  });
+  app.get('/user', users.edit_user);
+
+  // app.get('/user/profile', users.getUserProfile);
+  app.post('/user/update', users.update_user);
 
   app.get('/signup', users.init_signup);
   app.post('/signup', users.signup);
 
-  app.get('/login',  function(req, res){
-    if (req.session.user) {
-      res.redirect('/');
-    }
-    res.render('login', {msg:req.session.msg});
-  });
-  app.get('/logout', function(req, res){
+  app.get('/login', users.init_login);
+  app.post('/login', users.login);
+
+  app.get('/logout', function(req, res) {
     req.session.destroy(function(){
       res.redirect('/login');
     });
   });
 
-
-  // app.post('/user/update', users.updateUser);
   // app.post('/user/delete', users.deleteUser);
   // app.post('/login', users.login);
-  // app.get('/user/profile', users.getUserProfile);
+
 }

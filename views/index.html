@@ -5,14 +5,12 @@
   <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
 </head>
 <body>
-  <h2>Welcome!</h2>
   <% if (login) { %>
   <div ng-controller="myController">
-    <h2>Welcome, Your are Logged In as <%= username %></h2>
-    <a href="/logout">Logout</a>
+    <h2>Welcome back! Your are logged-in as <%= username %></h2>
+    <a href="/logout">Logout</a>&nbsp;&nbsp;&nbsp;
     <a href="/user">Edit account</a>
   </div>
-  <hr><%= msg %>
   <% } else { %>
     <a href="/signup">Sign Up &raquo;</a>&nbsp;&nbsp;&nbsp;
     <a href="/login">Login &raquo;</a>

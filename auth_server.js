@@ -6,6 +6,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 // var mongoStore = require('connect-mongo')(express);
 var mongoStore = require('connect-mongo/es5')(session); // For versions 0.10, 0.12 and io.js, you must use the ES5 fallback:
+var flash = require('connect-flash');
 
 require('./models/users_model.js');
 mongoose.connect('mongodb://localhost/useracctDB');
@@ -13,6 +14,7 @@ var app = express();
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
+app.use(flash());
 /*
  Error: Most middleware (like bodyParser) is no longer bundled with Express and must be installed separately.
  Please see https://github.com/senchalabs/connect#middleware
