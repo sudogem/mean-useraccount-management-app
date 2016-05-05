@@ -5,7 +5,6 @@ var sessmsg = "";
 module.exports = function(app) {
   var users = require('./controllers/users_controller');
   var site = require('./controllers/site_controller');
-  var middleware = require('./middleware');
 
   app.use('/static', express.static( './static'))
      .use('/lib', express.static( '../lib')
@@ -27,6 +26,9 @@ module.exports = function(app) {
   // app.get('/user/profile', users.getUserProfile);
   app.post('/user/update', users.update_user);
 
+  app.get('/user/delete_confirm', users.delete_confirm);
+  app.post('/user/delete', users.delete_user);
+
   app.get('/signup', users.init_signup);
   app.post('/signup', users.signup);
 
@@ -39,7 +41,7 @@ module.exports = function(app) {
     });
   });
 
-  // app.post('/user/delete', users.deleteUser);
+
   // app.post('/login', users.login);
 
 }

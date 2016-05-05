@@ -41,6 +41,7 @@ app.use(session({
   // })
 }));
 
+// No need the port is already defined in /bin/www
 var debug = require('debug')('mean-useraccount-management-app:server');
 require('./routes')(app);
 app.listen(8081);

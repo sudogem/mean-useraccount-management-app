@@ -123,3 +123,30 @@ exports.update_user = function(req, res) {
         });
       });
 }
+
+exports.delete_confirm = function(req, res) {
+  res.render('delete_confirm');
+};
+
+exports.delete_user = function(req, res) {
+  User.findOne({ _id: req.session.user })
+      .exec(function(err, user) {
+        if (!user) {
+          req.flash('msg', 'User not found.');
+          res.redirect('/login');
+        }
+
+        if (user) {
+          user.remove(function(err) {
+            if (err) {
+              res.sessor.error = err;
+            }
+            req.flash('msg', 'Successfully deleted.');
+            req.session.destroy(function() {
+              res.redirect('/login');
+            });
+          });
+        }
+      });
+
+}
