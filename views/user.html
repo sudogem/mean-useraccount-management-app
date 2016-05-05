@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+   <title>Signup</title>
+   <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+ </head>
+ <body>
+   <div class="form-container">
+     <h2>Edit Account</h2>
+     <%= msg %>
+     <form method="POST" action="/user/update">
+       <label>Username:</label><br><%= data.username %><br><br>
+       <label>Email:</label><br>
+         <input type="email" name="email" value="<%= data.email %>" ><br><br>
+         <label>Job title:</label><br>
+           <input type="job_title" name="job_title" value="<%= data.job_title %>" ><br>
+       <input type="submit" value="Update">
+       <a href="/">Homepage &raquo;</a>
+     </form>
+   </div>
+
+ </body>
+ </html>

@@ -12,6 +12,6 @@ $ DEBUG=mean-useraccount-management-app:* node auth_server.js
 * angularJS     
 * nodeJS    
 
-
 #### Developer    
-mean-useraccount-management-app &copy;2016 Arman Ortega. Released under the MIT License.    
+mean-useraccount-management-app &copy; 2016 Arman Ortega. Released under the MIT License.    
+

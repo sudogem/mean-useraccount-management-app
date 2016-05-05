@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+   <title>Signup</title>
+   <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+ </head>
+ <body>
+   <div class="form-container">
+     <h2>Sign Up</h2>
+     <%= msg %>
+     <form method="POST" action="/signup">
+       <label>Username:</label><br>
+         <input type="text" name="username"><br>
+       <label>Password:</label><br>
+         <input type="password" name="password"><br>
+       <label>Email:</label><br>
+         <input type="email" name="email"><br>
+       <label>Job title:</label><br>
+         <input type="job_title" name="job_title"><br>
+       <input type="submit" value="Register">
+       <a href="/login">Login &raquo;</a>
+     </form>
+   </div>
+
+ </body>
+ </html>

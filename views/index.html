@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>Homepage</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+</head>
+<body>
+  <% if (login) { %>
+  <div ng-controller="myController">
+    <h2>Welcome back! Your are logged-in as <%= username %></h2>
+    <a href="/logout">Logout</a>&nbsp;&nbsp;&nbsp;
+    <a href="/user">Edit account</a>&nbsp;&nbsp;&nbsp;
+    <a href="/user/delete_confirm">Delete account</a>
+  </div>
+  <% } else { %>
+    <a href="/signup">Sign Up &raquo;</a>&nbsp;&nbsp;&nbsp;
+    <a href="/login">Login &raquo;</a>
+  <% } %>
+
+  <script src="/lib/angular/angular.js"></script>
+  <script src="/static/js/my_app.js"></script>
+</body>
+</html>
