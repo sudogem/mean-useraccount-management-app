@@ -9,9 +9,9 @@ NOTE: Make sure that your mongoDB is running.
 
 #### Technology stacks:  
 * mongoDB      
-* expressJS  
+* expressJS v4  
 * angularJS     
-* nodeJS    
+* nodeJS v8.1.0    
 
 #### Developer    
 mean-useraccount-management-app &copy; 2016 Arman Ortega. Released under the MIT License.    
