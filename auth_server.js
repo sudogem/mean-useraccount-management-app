@@ -9,7 +9,9 @@ var mongoStore = require('connect-mongo/es5')(session); // For versions 0.10, 0.
 var flash = require('connect-flash');
 
 require('./models/users_model.js');
-mongoose.connect('mongodb://localhost/useracctDB');
+var connStr = process.env.MONGO_URL_USERACCT || 'mongodb://localhost/useracctDB';
+console.log(connStr);
+mongoose.connect(connStr);
 var app = express();
 app.engine('.html', require('ejs').__express);
 app.set('views', __dirname + '/views');
@@ -50,3 +52,4 @@ var debug = require('debug')('mean-useraccount-management-app:server');
 require('./routes')(app);
 app.listen(8081);
 debug('Listening on 8081');
+console.log('Listening on 8081');
